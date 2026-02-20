@@ -172,6 +172,7 @@ pnpm test
 | [Roadmap](docs/roadmap.md)                           | Phase-by-phase delivery plan        |
 | [Changelog](docs/CHANGELOG.md)                       | Version history                     |
 | [ADR 0001](docs/adr/0001-monorepo-and-tech-stack.md) | Monorepo & tech stack decision      |
+| [ADR 0002](docs/adr/0002-phase-0-addons.md)          | Phase 0 production addons           |
 | [Terraform README](infra/terraform/README.md)        | Infrastructure setup guide          |
 
 ---
