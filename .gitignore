@@ -23,5 +23,6 @@ infra/terraform/*.tfvars
 # Misc
 .DS_Store
 *.log
+*.tsbuildinfo
 coverage/
 .turbo/
