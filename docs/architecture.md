@@ -1,4 +1,5 @@
 # Architecture Document
+
 # Cloud-Powered Regulatory Compliance Platform
 
 **Version:** 0.1.0  
@@ -72,56 +73,56 @@ RDS for relational data, and S3 for evidence file storage.
 
 ### 2.1 Frontend
 
-| Technology | Version | Purpose |
-|-----------|---------|---------|
-| **Next.js** | 14.x (App Router) | React framework, SSR/SSG, server components |
-| **React** | 18.x | UI component library |
-| **TypeScript** | 5.x | Type safety |
+| Technology     | Version           | Purpose                                     |
+| -------------- | ----------------- | ------------------------------------------- |
+| **Next.js**    | 14.x (App Router) | React framework, SSR/SSG, server components |
+| **React**      | 18.x              | UI component library                        |
+| **TypeScript** | 5.x               | Type safety                                 |
 
 ### 2.2 Backend API
 
-| Technology | Version | Purpose |
-|-----------|---------|---------|
-| **NestJS** | 10.x | Structured Node.js framework, DI, modules |
-| **Fastify** | 4.x | High-performance HTTP adapter (via @nestjs/platform-fastify) |
-| **@nestjs/swagger** | 7.x | OpenAPI documentation generation |
-| **nestjs-pino** | 4.x | Structured JSON logging |
-| **@nestjs/terminus** | 10.x | Health check endpoints |
-| **TypeScript** | 5.x | Type safety |
+| Technology           | Version | Purpose                                                      |
+| -------------------- | ------- | ------------------------------------------------------------ |
+| **NestJS**           | 11.x    | Structured Node.js framework, DI, modules                    |
+| **Fastify**          | 5.x     | High-performance HTTP adapter (via @nestjs/platform-fastify) |
+| **@nestjs/swagger**  | 11.x    | OpenAPI documentation generation                             |
+| **nestjs-pino**      | 4.x     | Structured JSON logging                                      |
+| **@nestjs/terminus** | 11.x    | Health check endpoints                                       |
+| **TypeScript**       | 5.x     | Type safety                                                  |
 
 ### 2.3 Database
 
-| Technology | Version | Purpose |
-|-----------|---------|---------|
-| **PostgreSQL** | 16 | Primary relational database |
-| **TypeORM** (Phase 1) | 0.3.x | ORM, migrations |
-| **pg** | 8.x | PostgreSQL client |
+| Technology            | Version | Purpose                     |
+| --------------------- | ------- | --------------------------- |
+| **PostgreSQL**        | 16      | Primary relational database |
+| **TypeORM** (Phase 1) | 0.3.x   | ORM, migrations             |
+| **pg**                | 8.x     | PostgreSQL client           |
 
 ### 2.4 Infrastructure & Cloud (AWS)
 
-| Service | Purpose |
-|---------|---------|
-| **ECS Fargate** | Serverless container runtime for API and Web |
-| **RDS PostgreSQL** | Managed relational database with automated backups |
-| **S3** | Evidence file storage, reports, static assets |
-| **Secrets Manager** | Secure storage of credentials and secrets |
-| **CloudFront** | CDN for web application and static assets |
-| **ALB** | Application Load Balancer for routing and SSL termination |
-| **ECR** | Private Docker container registry |
-| **CloudWatch** | Logs, metrics, alarms |
-| **EventBridge** | Scheduled tasks (evidence polling, report generation) |
-| **SES** | Transactional email (Phase 2) |
+| Service             | Purpose                                                   |
+| ------------------- | --------------------------------------------------------- |
+| **ECS Fargate**     | Serverless container runtime for API and Web              |
+| **RDS PostgreSQL**  | Managed relational database with automated backups        |
+| **S3**              | Evidence file storage, reports, static assets             |
+| **Secrets Manager** | Secure storage of credentials and secrets                 |
+| **CloudFront**      | CDN for web application and static assets                 |
+| **ALB**             | Application Load Balancer for routing and SSL termination |
+| **ECR**             | Private Docker container registry                         |
+| **CloudWatch**      | Logs, metrics, alarms                                     |
+| **EventBridge**     | Scheduled tasks (evidence polling, report generation)     |
+| **SES**             | Transactional email (Phase 2)                             |
 
 ### 2.5 Developer Tooling
 
-| Tool | Purpose |
-|------|---------|
-| **pnpm** | Fast, disk-efficient package manager with workspaces |
-| **Terraform** | Infrastructure as Code |
-| **Docker / Docker Compose** | Containerization and local dev |
-| **GitHub Actions** | CI/CD pipeline |
-| **Husky + lint-staged** | Git hooks for pre-commit quality checks |
-| **ESLint + Prettier** | Linting and code formatting |
+| Tool                        | Purpose                                              |
+| --------------------------- | ---------------------------------------------------- |
+| **pnpm**                    | Fast, disk-efficient package manager with workspaces |
+| **Terraform**               | Infrastructure as Code                               |
+| **Docker / Docker Compose** | Containerization and local dev                       |
+| **GitHub Actions**          | CI/CD pipeline                                       |
+| **Husky + lint-staged**     | Git hooks for pre-commit quality checks              |
+| **ESLint + Prettier**       | Linting and code formatting                          |
 
 ---
 
@@ -138,7 +139,7 @@ RDS for relational data, and S3 for evidence file storage.
 │   │   ├── Dockerfile
 │   │   ├── nest-cli.json
 │   │   └── package.json
-│   └── web/                    # Next.js 14 frontend
+│   └── web/                    # Next.js 15 frontend
 │       ├── src/
 │       │   ├── app/            # App Router pages and layouts
 │       │   └── components/     # Shared React components
@@ -174,20 +175,24 @@ RDS for relational data, and S3 for evidence file storage.
 See `/docs/adr/` for full Architecture Decision Records.
 
 ### 4.1 NestJS + Fastify over Express
+
 NestJS provides opinionated structure (modules, controllers, services, DI) that scales well as the
 application grows. Fastify adapter offers ~2x throughput improvement over Express for high-volume
 evidence ingestion endpoints.
 
-### 4.2 App Router (Next.js 14) with Server Components
+### 4.2 App Router (Next.js 15) with Server Components
+
 React Server Components reduce client-side JavaScript bundle size. Server-side data fetching
 simplifies the dashboard pages that aggregate compliance data from multiple API endpoints.
 
 ### 4.3 PostgreSQL over NoSQL
+
 Compliance data has strong relational structure (controls → evidence → organizations). ACID
 transactions are required for audit trail integrity. PostgreSQL's JSONB column type handles
 flexible metadata without sacrificing query performance.
 
 ### 4.4 Terraform Modules
+
 Each AWS service is encapsulated in a reusable Terraform module, enabling environment-specific
 instantiation (dev/staging/prod) with different sizing parameters.
 
@@ -258,6 +263,7 @@ User triggers report → POST /api/reports
 ### 6.4 Audit Trail
 
 Every mutating API operation writes an `AuditLog` record containing:
+
 - `userId`, `organizationId`, `action` (CREATE/UPDATE/DELETE)
 - `resourceType`, `resourceId`
 - `previousValue` (JSON snapshot), `newValue` (JSON snapshot)

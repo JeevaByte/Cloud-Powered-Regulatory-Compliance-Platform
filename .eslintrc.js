@@ -2,11 +2,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
   env: {
     node: true,
     es2022: true,
@@ -16,5 +12,5 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
   },
-  ignorePatterns: ['dist/', 'node_modules/', '.next/', 'coverage/'],
+  ignorePatterns: ['dist/', 'node_modules/', '.next/', 'coverage/', 'next-env.d.ts'],
 };

@@ -34,17 +34,17 @@
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| **Frontend** | Next.js 14 (App Router), React 18, TypeScript |
-| **Backend API** | NestJS 10, Fastify, TypeScript |
-| **Database** | PostgreSQL 16 (RDS in prod, Docker in dev) |
-| **Object Storage** | AWS S3 (MinIO in dev) |
-| **Infrastructure** | Terraform, AWS ECS Fargate, ALB, CloudFront |
-| **Secrets** | AWS Secrets Manager |
-| **Monorepo** | pnpm workspaces |
-| **CI/CD** | GitHub Actions |
-| **Containerization** | Docker, Docker Compose |
+| Layer                | Technology                                    |
+| -------------------- | --------------------------------------------- |
+| **Frontend**         | Next.js 15 (App Router), React 18, TypeScript |
+| **Backend API**      | NestJS 11, Fastify 5, TypeScript              |
+| **Database**         | PostgreSQL 16 (RDS in prod, Docker in dev)    |
+| **Object Storage**   | AWS S3 (MinIO in dev)                         |
+| **Infrastructure**   | Terraform, AWS ECS Fargate, ALB, CloudFront   |
+| **Secrets**          | AWS Secrets Manager                           |
+| **Monorepo**         | pnpm workspaces                               |
+| **CI/CD**            | GitHub Actions                                |
+| **Containerization** | Docker, Docker Compose                        |
 
 ---
 
@@ -75,13 +75,13 @@ docker compose up --build
 
 ### Services
 
-| Service | URL | Description |
-|---------|-----|-------------|
-| **Web App** | http://localhost:3000 | Next.js frontend |
-| **API** | http://localhost:3001 | NestJS REST API |
-| **Swagger Docs** | http://localhost:3001/docs | OpenAPI documentation |
-| **MinIO Console** | http://localhost:9001 | S3-compatible object storage UI (user: `minioadmin` / pw: `minioadmin`) |
-| **PostgreSQL** | localhost:5432 | Database (user: `postgres` / pw: `postgres`) |
+| Service           | URL                        | Description                                                             |
+| ----------------- | -------------------------- | ----------------------------------------------------------------------- |
+| **Web App**       | http://localhost:3000      | Next.js frontend                                                        |
+| **API**           | http://localhost:3001      | NestJS REST API                                                         |
+| **Swagger Docs**  | http://localhost:3001/docs | OpenAPI documentation                                                   |
+| **MinIO Console** | http://localhost:9001      | S3-compatible object storage UI (user: `minioadmin` / pw: `minioadmin`) |
+| **PostgreSQL**    | localhost:5432             | Database (user: `postgres` / pw: `postgres`)                            |
 
 ### Health Checks
 
@@ -131,7 +131,7 @@ pnpm test
 │   │   │   └── health/         # /healthz and /readyz endpoints
 │   │   ├── Dockerfile
 │   │   └── package.json        # @compliance/api
-│   └── web/                    # Next.js 14 frontend
+│   └── web/                    # Next.js 15 frontend
 │       ├── src/
 │       │   ├── app/            # App Router (layout, pages)
 │       │   └── components/     # React components
@@ -164,27 +164,27 @@ pnpm test
 
 ## Documentation
 
-| Document | Description |
-|----------|-------------|
-| [PRD](docs/PRD.md) | Product Requirements Document |
-| [Architecture](docs/architecture.md) | System architecture and tech stack |
-| [Data Model](docs/data-model.md) | Database entities and relationships |
-| [Roadmap](docs/roadmap.md) | Phase-by-phase delivery plan |
-| [Changelog](docs/CHANGELOG.md) | Version history |
-| [ADR 0001](docs/adr/0001-monorepo-and-tech-stack.md) | Monorepo & tech stack decision |
-| [Terraform README](infra/terraform/README.md) | Infrastructure setup guide |
+| Document                                             | Description                         |
+| ---------------------------------------------------- | ----------------------------------- |
+| [PRD](docs/PRD.md)                                   | Product Requirements Document       |
+| [Architecture](docs/architecture.md)                 | System architecture and tech stack  |
+| [Data Model](docs/data-model.md)                     | Database entities and relationships |
+| [Roadmap](docs/roadmap.md)                           | Phase-by-phase delivery plan        |
+| [Changelog](docs/CHANGELOG.md)                       | Version history                     |
+| [ADR 0001](docs/adr/0001-monorepo-and-tech-stack.md) | Monorepo & tech stack decision      |
+| [Terraform README](infra/terraform/README.md)        | Infrastructure setup guide          |
 
 ---
 
 ## Supported Compliance Frameworks
 
-| Framework | Status |
-|-----------|--------|
-| SOC 2 Type II | Phase 1 |
+| Framework          | Status  |
+| ------------------ | ------- |
+| SOC 2 Type II      | Phase 1 |
 | ISO/IEC 27001:2022 | Phase 1 |
-| GDPR | Phase 1 |
-| HIPAA | Phase 1 |
-| PCI DSS v4.0 | Phase 1 |
+| GDPR               | Phase 1 |
+| HIPAA              | Phase 1 |
+| PCI DSS v4.0       | Phase 1 |
 
 ---
 
