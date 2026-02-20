@@ -12,20 +12,20 @@ This directory contains the Terraform infrastructure-as-code for the Cloud-Power
 
 infra/terraform/
 ├── modules/
-│   ├── rds/          # RDS PostgreSQL
-│   ├── s3/           # S3 buckets (evidence, reports)
-│   ├── secrets/      # AWS Secrets Manager
-│   └── ecs/          # ECS Fargate services
-├── main.tf           # Root module
-├── variables.tf      # Input variables
-├── outputs.tf        # Output values
-├── providers.tf      # Provider configuration
-└── backend.tf        # Remote state configuration
+│ ├── rds/ # RDS PostgreSQL
+│ ├── s3/ # S3 buckets (evidence, reports)
+│ ├── secrets/ # AWS Secrets Manager
+│ └── ecs/ # ECS Fargate services
+├── main.tf # Root module
+├── variables.tf # Input variables
+├── outputs.tf # Output values
+├── providers.tf # Provider configuration
+└── backend.tf # Remote state configuration
 
 ## Usage
 
 cd infra/terraform
-cp terraform.tfvars.example terraform.tfvars  # fill in values
+cp terraform.tfvars.example terraform.tfvars # fill in values
 terraform init
 terraform plan
 terraform apply

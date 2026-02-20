@@ -24,5 +24,6 @@ infra/terraform/*.tfvars
 .DS_Store
 *.log
 *.tsbuildinfo
+nohup.out
 coverage/
 .turbo/

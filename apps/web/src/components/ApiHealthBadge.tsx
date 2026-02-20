@@ -1,23 +1,24 @@
-async function getApiHealth(): Promise<{ status: string } | null> {
+import type { HealthCheckResponse } from '@compliance/shared';
+
+async function getApiHealth(): Promise<Pick<HealthCheckResponse, 'status'> | null> {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
   try {
     const res = await fetch(`${apiUrl}/healthz`, {
       next: { revalidate: 30 },
     });
-    if (!res.ok) return { status: 'degraded' };
-    const data = await res.json();
-    return { status: data.status ?? 'unknown' };
+    if (!res.ok) return null;
+    const data: HealthCheckResponse = await res.json();
+    return { status: data.status };
   } catch {
-    return { status: 'offline' };
+    return null;
   }
 }
 
 export async function ApiHealthBadge() {
   const health = await getApiHealth();
-  const status = health?.status ?? 'unknown';
+  const status = health?.status ?? 'error';
 
-  const color =
-    status === 'ok' ? '#22c55e' : status === 'offline' ? '#ef4444' : '#f59e0b';
+  const color = status === 'ok' ? '#22c55e' : '#ef4444';
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>

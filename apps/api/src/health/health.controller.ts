@@ -1,10 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import {
-  HealthCheck,
-  HealthCheckService,
-  MemoryHealthIndicator,
-} from '@nestjs/terminus';
+import { HealthCheck, HealthCheckService, MemoryHealthIndicator } from '@nestjs/terminus';
 
 @ApiTags('Health')
 @Controller()
@@ -18,17 +14,13 @@ export class HealthController {
   @ApiOperation({ summary: 'Liveness probe' })
   @HealthCheck()
   liveness() {
-    return this.health.check([
-      () => this.memory.checkHeap('memory_heap', 300 * 1024 * 1024),
-    ]);
+    return this.health.check([() => this.memory.checkHeap('memory_heap', 300 * 1024 * 1024)]);
   }
 
   @Get('readyz')
   @ApiOperation({ summary: 'Readiness probe' })
   @HealthCheck()
   readiness() {
-    return this.health.check([
-      () => this.memory.checkHeap('memory_heap', 300 * 1024 * 1024),
-    ]);
+    return this.health.check([() => this.memory.checkHeap('memory_heap', 300 * 1024 * 1024)]);
   }
 }

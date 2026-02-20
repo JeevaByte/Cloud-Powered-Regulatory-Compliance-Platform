@@ -1,0 +1,48 @@
+# Version control
+.git
+.gitignore
+
+# Dependencies (installed inside the build stage)
+node_modules
+**/node_modules
+.pnpm-store
+
+# Build outputs
+dist
+build
+.next
+out
+**/dist
+**/build
+coverage
+
+# Environment files (never in image)
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Terraform state and secrets
+infra/terraform/.terraform
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.backup
+infra/terraform/*.tfvars
+infra/terraform/.terraform.lock.hcl
+
+# Editor and OS
+.DS_Store
+*.log
+*.tsbuildinfo
+.vscode
+.idea
+
+# CI/CD
+.github
+
+# Docs (not needed in runtime image)
+docs
+
+# Local dev overrides
+docker-compose.override.yml

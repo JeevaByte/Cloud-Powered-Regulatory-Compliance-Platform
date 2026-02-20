@@ -1,4 +1,5 @@
 # Product Requirements Document (PRD)
+
 # Cloud-Powered Regulatory Compliance Platform
 
 **Version:** 0.1.0  
@@ -43,12 +44,12 @@ cloud infrastructure.
 
 ### 2.1 Primary Users
 
-| Persona | Role | Key Needs |
-|---------|------|-----------|
-| **Compliance Officer** | Owns compliance program | Framework tracking, evidence status, reporting, gap analysis |
-| **IT/Security Engineer** | Implements controls | Control assignments, evidence upload, technical check automation |
-| **Internal Auditor** | Reviews compliance state | Read-only views, evidence review, comment on controls |
-| **External Auditor** | Conducts formal audit | Scoped read-only access, evidence packages, audit trail |
+| Persona                  | Role                     | Key Needs                                                        |
+| ------------------------ | ------------------------ | ---------------------------------------------------------------- |
+| **Compliance Officer**   | Owns compliance program  | Framework tracking, evidence status, reporting, gap analysis     |
+| **IT/Security Engineer** | Implements controls      | Control assignments, evidence upload, technical check automation |
+| **Internal Auditor**     | Reviews compliance state | Read-only views, evidence review, comment on controls            |
+| **External Auditor**     | Conducts formal audit    | Scoped read-only access, evidence packages, audit trail          |
 
 ### 2.2 Secondary Users
 
@@ -71,6 +72,7 @@ The platform ships with built-in support for the following compliance frameworks
 - **PCI DSS v4.0** (12 Requirements)
 
 Features:
+
 - Import framework control sets from curated library
 - Map multiple frameworks to the same internal control (control crosswalk)
 - Track framework-level compliance percentage
@@ -118,6 +120,7 @@ Features:
 ### 3.6 User & Role Management
 
 Roles:
+
 - **Owner** — Full administrative access including billing and org settings
 - **Admin** — User management, framework configuration, all read/write
 - **Editor** — Create/edit controls and evidence, cannot manage users
@@ -126,6 +129,7 @@ Roles:
 - **Auditor** — Scoped read-only access granted per audit engagement
 
 Features:
+
 - SSO via SAML 2.0 / OIDC (Phase 1)
 - SCIM provisioning (Phase 2)
 - MFA enforcement at organization level
@@ -172,6 +176,7 @@ Features:
 Scope: Repository structure, infrastructure skeleton, CI/CD pipeline, basic health endpoints.
 
 Deliverables:
+
 - Monorepo scaffold (pnpm workspaces, NestJS API, Next.js web, shared package)
 - Terraform IaC skeleton (RDS, S3, Secrets Manager, ECS Fargate)
 - Docker Compose local dev environment
@@ -184,6 +189,7 @@ Deliverables:
 Scope: Database schema, authentication, frameworks, controls, evidence CRUD.
 
 Deliverables:
+
 - PostgreSQL schema with TypeORM migrations
 - JWT authentication with refresh tokens
 - Organization and user management API
@@ -197,6 +203,7 @@ Deliverables:
 Scope: AWS integrations, automated evidence collection, scheduled checks.
 
 Deliverables:
+
 - AWS Config integration (automated control checks)
 - AWS CloudTrail ingestion
 - AWS Security Hub findings import
@@ -209,6 +216,7 @@ Deliverables:
 Scope: Reporting, gap analysis, AI-powered recommendations.
 
 Deliverables:
+
 - Compliance score trending and analytics
 - Gap analysis report generation
 - AI-powered control gap recommendations (OpenAI/Bedrock)
@@ -220,6 +228,7 @@ Deliverables:
 Scope: Azure/GCP integrations, marketplace listings.
 
 Deliverables:
+
 - Azure Policy and Microsoft Defender integration
 - GCP Security Command Center integration
 - AWS Marketplace listing
@@ -239,11 +248,11 @@ Deliverables:
 
 ## 7. Success Metrics
 
-| Metric | Target (6 months post-GA) |
-|--------|--------------------------|
-| Organizations onboarded | 50 |
-| Average audit prep time reduction | 60% |
-| Controls with automated evidence | 40% |
-| User NPS | > 40 |
-| API uptime | 99.9% |
-| Critical security vulnerabilities | 0 open > 7 days |
+| Metric                            | Target (6 months post-GA) |
+| --------------------------------- | ------------------------- |
+| Organizations onboarded           | 50                        |
+| Average audit prep time reduction | 60%                       |
+| Controls with automated evidence  | 40%                       |
+| User NPS                          | > 40                      |
+| API uptime                        | 99.9%                     |
+| Critical security vulnerabilities | 0 open > 7 days           |
