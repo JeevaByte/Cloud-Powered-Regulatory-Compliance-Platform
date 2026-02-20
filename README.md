@@ -217,11 +217,24 @@ GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and pull
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feat/my-feature`)
-3. Make your changes and ensure all checks pass (`pnpm lint && pnpm typecheck && pnpm test`)
-4. Commit with a descriptive message
-5. Open a Pull Request against `develop`
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide, including:
+
+- How to fork, clone, and set up the repo
+- How to create a branch, commit, and **push your code**
+- Branch naming and commit message conventions
+- How to open a pull request
+- What the CI pipeline checks
+
+Quick start:
+
+```bash
+git checkout -b feat/my-feature    # branch off develop
+# … make changes …
+pnpm lint && pnpm typecheck && pnpm test   # must all pass
+git add . && git commit -m "feat: my change"
+git push origin feat/my-feature    # push to your fork
+# then open a PR against develop on GitHub
+```
 
 ---
 
