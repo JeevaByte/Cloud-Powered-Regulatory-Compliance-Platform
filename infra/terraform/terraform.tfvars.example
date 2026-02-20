@@ -1,0 +1,5 @@
+aws_region  = "us-east-1"
+environment = "dev"
+app_name    = "compliance-platform"
+db_username = "replace_me"
+db_password = "replace_me_with_strong_password"
