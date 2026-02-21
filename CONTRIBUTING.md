@@ -212,6 +212,13 @@ you can use that directly or follow Step 9.
 The CI pipeline (`ci.yml`) will run automatically: lint → typecheck → tests → build →
 Docker build → Trivy security scan. All jobs must be green before the PR can be merged.
 
+> **Note for first-time contributors and bots:** GitHub requires a repository maintainer to
+> approve the first CI run for a new contributor. If you see the CI status as
+> "Waiting for approval" or `action_required`, the repository owner needs to visit
+> `https://github.com/JeevaByte/Cloud-Powered-Regulatory-Compliance-Platform/actions`
+> and click **"Approve and run"** on the blocked workflow run. The workflow can also be
+> triggered manually at any time from the Actions tab using **"Run workflow"**.
+
 ---
 
 ## Branch Naming Convention
@@ -281,6 +288,10 @@ GitHub CI Pipeline (.github/workflows/ci.yml)
 > **Tip:** If CI is red on your PR, click the failing job to read the logs. The most common
 > issues are lint errors (run `pnpm lint && pnpm format`) or a missing `pnpm typecheck` pass
 > (ensure `packages/shared` was built first — `pnpm typecheck` does this automatically).
+>
+> If CI shows `action_required` with no jobs running, a repository maintainer needs to approve
+> the workflow run in the GitHub Actions tab. The CI can also be triggered manually via
+> **Actions → CI → Run workflow**.
 
 ---
 
